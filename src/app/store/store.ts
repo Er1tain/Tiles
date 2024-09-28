@@ -1,5 +1,10 @@
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+export interface TypeState {
+    frame_size: FrameSize,
+    moves: Move[]
+}
+
 export interface Move {
     1: string,
     2: string
@@ -7,14 +12,14 @@ export interface Move {
 
 export type FrameSize = "2x2"|"4x4"|"8x8";
 
-const initialStateMoves: Move[] = []; 
+const initialState: TypeState = {
+    frame_size: "2x2",
+    moves: []
+}
 
 const gameSlice = createSlice({
     name: "game",
-    initialState: {
-        frame_size: "",
-        moves: initialStateMoves
-    },
+    initialState: initialState,
 
     reducers: {
         choiceSize(state, action: PayloadAction<FrameSize>) {
@@ -28,8 +33,25 @@ const gameSlice = createSlice({
 
 });
 
-export const store = configureStore({
+const store = configureStore({
     reducer: gameSlice.reducer
 });
 
+//Сохранение в localStorage размера игрового поля
+store.subscribe(()=>{
+    const frame_size = store.getState().frame_size;
+
+    localStorage.setItem("frame_size", frame_size);
+    console.log(store.getState())
+})
+
+//Сохранение хода игрока
+store.subscribe(()=>{
+    const moves = store.getState().moves;
+
+    localStorage.setItem("moves", JSON.stringify(moves));
+    console.log(store.getState())
+})
+
 export const {choiceSize, addMove} = gameSlice.actions;
+export default store;
