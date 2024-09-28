@@ -3,19 +3,23 @@ import { Route, Routes } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import Settings from './pages/Settings';
 import Game from './pages/Game';
+import { Provider } from 'react-redux';
+import  store  from './app/store/store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
     <BrowserRouter>
-      <Routes>
-        <Route path='*' element={<Settings/>}/>
+      <Provider store={store}>
+        <Routes>
+          <Route path='*' element={<Settings/>}/>
 
-        <Route path='/' element={<Settings/>} />
+          <Route path='/' element={<Settings/>} />
 
-        <Route path='/game' element={<Game/>}/>
+          <Route path='/game' element={<Game/>}/>
 
-      </Routes>
+        </Routes>
+      </Provider>
     </BrowserRouter>
 );
