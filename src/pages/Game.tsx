@@ -1,4 +1,5 @@
 import useLocalStorage from "../app/hooks/useLocalStorage";
+import GameFrame from "../widgets/GameFrame";
 
 export default function Game() {
     //Количество строк/столбцов(их кол-во одинаково)
@@ -7,6 +8,7 @@ export default function Game() {
     return (
             <div>
                 <h1>Игра</h1>
+                <GameFrame size={frame_size}/>
             </div>
     );
 }
