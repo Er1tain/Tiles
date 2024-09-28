@@ -15,6 +15,6 @@ export default function Tiles({backgroundColor = '', num_col, num_row}: ITiles) 
     const value_tile = num_row + num_col;
 
     return (
-        <button style={{width: 100, height: 100, background: bg}} onClick={OpenTiles} value={value_tile}/>  
+        <button className={'tile'} style={{width: 100, height: 100, background: bg}} onClick={OpenTiles} value={value_tile}/>  
     );
 }
