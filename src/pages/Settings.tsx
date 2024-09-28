@@ -1,15 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { choiceSize, FrameSize, TypeState} from "../app/store/store";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function Settings() {
     const select_ref = useRef<HTMLSelectElement>(null);
     const dispatch = useDispatch();
     
+    //Кнопка не видна, пока не выбран размер поля
+    const [visible_button, setVisible] = useState<any>('hidden');
+
     const setFrameSizeInStore = ()=>{
         const value = select_ref.current?.value as FrameSize;
         dispatch(choiceSize(value));
 
+        setVisible("visible");
     }
 
     return (
@@ -20,6 +24,7 @@ export default function Settings() {
                     <option value={"4x4"}>4x4</option>
                     <option value={"8x8"}>8x8</option>
                 </select>
+                <button style={{visibility: visible_button }}>Продолжить</button>
             </div>
     );
 }
