@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { choiceSize, FrameSize, TypeState} from "../app/store/store";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router";
 
 export default function Settings() {
     const select_ref = useRef<HTMLSelectElement>(null);
@@ -16,6 +17,9 @@ export default function Settings() {
         setVisible("visible");
     }
 
+    const nav = useNavigate();
+    const goToGame = ()=>nav('/game');
+
     return (
             <div>
                 <h1>Размер поля: </h1>
@@ -24,7 +28,7 @@ export default function Settings() {
                     <option value={"4x4"}>4x4</option>
                     <option value={"8x8"}>8x8</option>
                 </select>
-                <button style={{visibility: visible_button }}>Продолжить</button>
+                <button style={{visibility: visible_button }} onClick={goToGame}>Продолжить</button>
             </div>
     );
 }
