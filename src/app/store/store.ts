@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface Move {
     1: string,
@@ -28,5 +28,8 @@ const gameSlice = createSlice({
 
 });
 
+export const store = configureStore({
+    reducer: gameSlice.reducer
+});
+
 export const {choiceSize, addMove} = gameSlice.actions;
-export default gameSlice.reducer;
