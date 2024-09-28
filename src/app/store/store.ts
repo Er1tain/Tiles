@@ -7,7 +7,8 @@ export interface TypeState {
 
 export interface Move {
     1: string,
-    2: string
+    2: string,
+    result: boolean
 }
 
 export type FrameSize = "2x2"|"4x4"|"8x8";
