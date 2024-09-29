@@ -16,4 +16,4 @@ export const GameFrameProvider = ({children}: any) => {
     );
 }
 
-export const useGameFrameContext = useContext(GameFrameContext);
+export const useGameFrameContext = ()=>useContext(GameFrameContext);
