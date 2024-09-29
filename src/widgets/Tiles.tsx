@@ -43,6 +43,6 @@ export default function Tiles({backgroundColor = '', num_col, num_row, choice_ti
     } ,[bg])
 
     return (
-        <button className={'tile'} style={{width: 100, height: 100, background: bg}} onClick={OpenTiles} value={value_tile}/>  
+        <button className={'tile'} style={{width: 100, height: 100, background: bg}} onClick={OpenTiles} value={value_tile} disabled={bg != ''}/>  
     );
 }
