@@ -43,7 +43,6 @@ store.subscribe(()=>{
     const frame_size = store.getState().frame_size;
 
     localStorage.setItem("frame_size", frame_size);
-    console.log(store.getState())
 })
 
 //Сохранение хода игрока
