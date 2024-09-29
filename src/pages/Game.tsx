@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import useLocalStorage from "../app/hooks/useLocalStorage";
-import GameFrame from "../widgets/GameFrame";
+import GameFrame from "../widgets/GameFrame/GameFrame";
 
 export default function Game() {
     //Количество строк/столбцов(их кол-во одинаково)
