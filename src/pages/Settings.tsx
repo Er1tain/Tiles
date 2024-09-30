@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { choiceSize, FrameSize, TypeState} from "../app/store/store";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
-import { Container } from "../styles/pages/Settings";
+import { Container, GameButton } from "../styles/pages/Settings";
 
 export default function Settings() {
     const select_ref = useRef<HTMLSelectElement>(null);
@@ -29,7 +29,7 @@ export default function Settings() {
                     <option value={"4x4"}>4x4</option>
                     <option value={"8x8"}>8x8</option>
                 </select>
-                <button style={{visibility: visible_button }} onClick={goToGame}>Продолжить</button>
+                <GameButton style={{visibility: visible_button }} onClick={goToGame}>Продолжить</GameButton>
             </Container>
     );
 }
