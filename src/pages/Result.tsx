@@ -12,8 +12,11 @@ export default function Result() {
         if (results.moves.length == 0) nav('/');
     }, [])
 
+    const goToMain = ()=>nav('/');
+
     return (
         <Container>
+            <button onClick={goToMain}>На главную</button>
             <h1>Результаты: </h1>
             <p>Размер поля: {results.frame_size}</p>
             <p>Количество раундов: {results.current_round}</p>
