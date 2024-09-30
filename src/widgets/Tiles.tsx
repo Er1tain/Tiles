@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { initStateChoiceTiles } from "./GameFrame/GameFrame";
 import { useTilesContext } from "../app/hooks/useTilesContext";
+import { Tile } from "../styles/widgets/Tile";
 
 interface ITiles {
     backgroundColor?: string
@@ -61,6 +62,6 @@ export default function Tiles({backgroundColor = '', num_col, num_row, choice_ti
     } ,[bg])
 
     return (
-        <button ref={ref_tile} className={'tile'} style={{width: 100, height: 100, background: bg}} onClick={OpenTiles} value={value_tile} disabled={bg != ''}/>  
+        <Tile ref={ref_tile} className={'tile'} style={{width: 100, height: 100, background: bg}} onClick={OpenTiles} value={value_tile} disabled={bg != ''}/>  
     );
 }
