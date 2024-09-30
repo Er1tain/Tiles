@@ -16,5 +16,7 @@ export default function TilesContextProvider({children}: any) {
 
 }
 
-export const useTilesContext = useContext(Context);
+export const useTilesContext = ()=>{
+    return useContext(Context);
+}
 
