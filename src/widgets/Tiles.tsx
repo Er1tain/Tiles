@@ -1,5 +1,6 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { initStateChoiceTiles } from "./GameFrame/GameFrame";
+import { useTilesContext } from "../app/hooks/useTilesContext";
 
 interface ITiles {
     backgroundColor?: string
@@ -15,7 +16,10 @@ export default function Tiles({backgroundColor = '', num_col, num_row, choice_ti
     const OpenTiles = ()=>setBG(backgroundColor);
 
     //Ccылка на функцию изменения состояния плитки
-    const ref_tile_and_state = useRef<Dispatch<SetStateAction<string>>>(setBG);
+    const [list_refs_tiles, setListRefsTiles] = useTilesContext() as [Dispatch<SetStateAction<string>>[], Dispatch<SetStateAction<Dispatch<SetStateAction<string>>[]>>];
+    const current_list_refs_tiles = list_refs_tiles;
+    current_list_refs_tiles.push(setBG);
+    //
 
     //Координаты плитки(двузначное число; 1 цифра номер строки)
     const value_tile = num_row + num_col;
