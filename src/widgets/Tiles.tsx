@@ -19,6 +19,7 @@ export default function Tiles({backgroundColor = '', num_col, num_row, choice_ti
     const [list_refs_tiles, setListRefsTiles] = useTilesContext() as [Dispatch<SetStateAction<string>>[], Dispatch<SetStateAction<Dispatch<SetStateAction<string>>[]>>];
     const current_list_refs_tiles = list_refs_tiles;
     current_list_refs_tiles.push(setBG);
+    setListRefsTiles(current_list_refs_tiles);
     //
 
     //Координаты плитки(двузначное число; 1 цифра номер строки)
