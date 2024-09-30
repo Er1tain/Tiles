@@ -21,12 +21,15 @@ export default function Tiles({backgroundColor = '', num_col, num_row, choice_ti
     //Контекст плиток
     const [state_tiles_context, setStateTilesContext] = useTilesContext() as [{ref_tile: any, changeColorTile: any}[],
      Dispatch<SetStateAction<{ref_tile: any, changeColorTile: any}[]>>];
-     const current_state_tiles_context = state_tiles_context;
-     current_state_tiles_context.push({
+
+     useEffect(()=>{
+        const current_state_tiles_context = state_tiles_context;
+        current_state_tiles_context.push({
         ref_tile: ref_tile,
         changeColorTile: setBG
      })
      setStateTilesContext(current_state_tiles_context);
+     }, []);
     //
 
     //Координаты плитки(двузначное число; 1 цифра номер строки)
