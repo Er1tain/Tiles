@@ -61,5 +61,5 @@ store.subscribe(()=>{
     console.log(store.getState())
 })
 
-export const {choiceSize, addMove, beginNewRound} = gameSlice.actions;
+export const {choiceSize, addMove, beginNewRound, beginGame} = gameSlice.actions;
 export default store;

@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
-import { choiceSize, FrameSize, TypeState} from "../app/store/store";
+import { useDispatch } from "react-redux";
+import { beginGame, choiceSize, FrameSize} from "../app/store/store";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { Container, GameButton } from "../styles/pages/Settings";
@@ -19,7 +19,14 @@ export default function Settings() {
     }
 
     const nav = useNavigate();
+
     const goToGame = ()=>nav('/game');
+    const BeginGame = ()=>dispatch(beginGame());
+
+    const composer = ()=>{
+        BeginGame(); 
+        goToGame();
+    }
 
     return (
             <Container>
@@ -29,7 +36,7 @@ export default function Settings() {
                     <option value={"4x4"}>4x4</option>
                     <option value={"8x8"}>8x8</option>
                 </select>
-                <GameButton style={{visibility: visible_button }} onClick={goToGame}>Продолжить</GameButton>
+                <GameButton style={{visibility: visible_button }} onClick={composer}>Продолжить</GameButton>
             </Container>
     );
 }
