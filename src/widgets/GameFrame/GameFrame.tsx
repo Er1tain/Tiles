@@ -22,9 +22,8 @@ export default function GameFrame({size}: IGameFrame) {
     const [choice_tiles, setChoiceTiles] = useState<ChoiceTilesType>(initStateChoiceTiles);
 
     //Массив цветов для плиток
-    let colors_for_tiles = shuffle((new Array(size * size / 2).fill(COLOR_TYPE_TILE_1))
-        .concat(new Array(size * size / 2).fill(COLOR_TYPE_TILE_2)));  
-    
+    const [colors_for_tiles, setColorsForTiles] = useState<string[]>(shuffle((new Array(size * size / 2).fill(COLOR_TYPE_TILE_1))
+    .concat(new Array(size * size / 2).fill(COLOR_TYPE_TILE_2))));
     
     let index_start = 0;    
     const generateRowTiles = (num_row: number)=>{
