@@ -6,6 +6,7 @@ import { shuffle } from "./logic";
 import useStoreForSendMove from "./useStoreForSendMove";
 import MessageAboutNewRound from "../../app/modal_windows/MessageAboutNewRound";
 import TilesContextProvider from "../../app/hooks/useTilesContext";
+import { ColsTiles, RowTiles } from "../../styles/pages/Game";
 
 export const initStateChoiceTiles: ChoiceTilesType = {
     first_tiles: {
@@ -30,25 +31,25 @@ export default function GameFrame({size}: IGameFrame) {
         const list_colors_for_row_tiles = colors_for_tiles.slice(index_start, index_start + size);
 
         return (
-            <div>
+            <RowTiles>
                 {list_colors_for_row_tiles.map((color, i)=>{
                     if (i == size - 1) index_start += size;
                     return <Tiles num_row={num_row.toString()} num_col={i.toString()} backgroundColor={color} choice_tiles={choice_tiles} setChoiceTiles={setChoiceTiles}/>
                 })}
-            </div>
+            </RowTiles>
         );
     }
 
     const generateColumns = ()=>{
         return (
             <>
-            <div style={{position: "absolute"}}>
+            <ColsTiles style={{position: "absolute"}}>
                 {new Array(size).fill('').map((_, i)=>{
                     return (
                         <div>{generateRowTiles(i)}</div>
                     )
                 })}
-            </div>
+            </ColsTiles>
             <MessageAboutNewRound text="Раунд: " color_text="red" choice_tiles={choice_tiles}/>
             </>
         );
