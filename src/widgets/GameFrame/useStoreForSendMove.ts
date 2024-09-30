@@ -19,5 +19,5 @@ export default function useStoreForSendMove([choice_tiles, setChoiceTiles]: [Cho
 
             if (choice_tiles?.second_tiles.color_tiles != "") setChoiceTiles(initStateChoiceTiles);
         }
-    }, [choice_tiles])
+    }, [choice_tiles, dispatch, setChoiceTiles])
 }
