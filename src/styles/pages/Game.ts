@@ -8,7 +8,6 @@ export const Container = styled.div`
 
 export const SettingsButton = styled.button`
     width: max-content;
-    margin-top: 50px;
 `
 export const RowTiles = styled.div`
     display: flex;

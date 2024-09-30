@@ -13,8 +13,8 @@ export default function Game() {
     return (
             <Container>
                 <h1>Игра</h1>
-                <GameFrame size={frame_size ? frame_size : 2}/>
                 <SettingsButton onClick={goToSettings}>К настройкам</SettingsButton>
+                <GameFrame size={frame_size ? frame_size : 2}/>
             </Container>
     );
 }
