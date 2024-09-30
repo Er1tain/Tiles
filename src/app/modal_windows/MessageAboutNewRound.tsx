@@ -2,7 +2,8 @@ import styled from "styled-components"
 import { ChoiceTilesType } from "../../widgets/GameFrame/types"
 import { useSelector } from "react-redux"
 import { TypeState } from "../store/store"
-import { useEffect, useState } from "react"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { useTilesContext } from "../hooks/useTilesContext"
 
 interface IMessageAboutNewRound {
     text: string
@@ -31,14 +32,20 @@ export default function MessageAboutNewRound({text, color_text, choice_tiles}: I
     //Получаем значение для текущего раунда из store
     const current_round: number = useSelector<TypeState>(state => state.current_round) as number;
 
+    //Получаем доступ к контексту, который хранит список ссылок на функции состояний плиток
+    const [state_tiles_context, setStateTilesContext] = useTilesContext()as [{ref_tile: any, changeColorTile: any}[],
+    Dispatch<SetStateAction<{ref_tile: any, changeColorTile: any}[]>>];
+
     //Делаем кликабельными пару выбранных ранее плиток разного цвета + сброс цвета
     useEffect(()=>{
-        document.querySelectorAll("button").forEach(tile=>{
-            if (tile.className == 'tile' && (tile.value == choice_tiles?.first_tiles.coords || tile.value == choice_tiles?.second_tiles.coords)) {
-                tile.style.backgroundColor = '';
-                tile.disabled = false;
+        state_tiles_context.map((pair_reftile_setTileColor)=>{
+            const ref_tile = pair_reftile_setTileColor.ref_tile;
+            const setTileColor = pair_reftile_setTileColor.changeColorTile;
+
+            if (ref_tile.current.value == choice_tiles?.first_tiles.coords || ref_tile.current.value == choice_tiles?.second_tiles.coords) {
+                setTileColor('');
             }
-        });
+        })
 
         //Уведомление о новом раунде
         setStatus("visible");

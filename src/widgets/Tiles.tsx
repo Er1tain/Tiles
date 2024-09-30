@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { initStateChoiceTiles } from "./GameFrame/GameFrame";
 import { useTilesContext } from "../app/hooks/useTilesContext";
 
@@ -14,12 +14,19 @@ export default function Tiles({backgroundColor = '', num_col, num_row, choice_ti
     //Плитка не видна пока на неё не кликнут
     const [bg, setBG] = useState<string>('');
     const OpenTiles = ()=>setBG(backgroundColor);
+    
+    //Ссылка на плитку
+    const ref_tile = useRef<HTMLButtonElement>(null);
 
-    //Ccылка на функцию изменения состояния плитки
-    const [list_refs_tiles, setListRefsTiles] = useTilesContext() as [Dispatch<SetStateAction<string>>[], Dispatch<SetStateAction<Dispatch<SetStateAction<string>>[]>>];
-    const current_list_refs_tiles = list_refs_tiles;
-    current_list_refs_tiles.push(setBG);
-    setListRefsTiles(current_list_refs_tiles);
+    //Контекст плиток
+    const [state_tiles_context, setStateTilesContext] = useTilesContext() as [{ref_tile: any, changeColorTile: any}[],
+     Dispatch<SetStateAction<{ref_tile: any, changeColorTile: any}[]>>];
+     const current_state_tiles_context = state_tiles_context;
+     current_state_tiles_context.push({
+        ref_tile: ref_tile,
+        changeColorTile: setBG
+     })
+     setStateTilesContext(current_state_tiles_context);
     //
 
     //Координаты плитки(двузначное число; 1 цифра номер строки)
@@ -51,6 +58,6 @@ export default function Tiles({backgroundColor = '', num_col, num_row, choice_ti
     } ,[bg])
 
     return (
-        <button className={'tile'} style={{width: 100, height: 100, background: bg}} onClick={OpenTiles} value={value_tile} disabled={bg != ''}/>  
+        <button ref={ref_tile} className={'tile'} style={{width: 100, height: 100, background: bg}} onClick={OpenTiles} value={value_tile} disabled={bg != ''}/>  
     );
 }

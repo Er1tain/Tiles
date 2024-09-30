@@ -5,7 +5,7 @@ let Context: any = createContext<any>(null);
 //Контекст для манипуляций с плитками и хук для его использования
 export default function TilesContextProvider({children}: any) {
     const state_list_refs = useState<
-        React.MutableRefObject<Dispatch<SetStateAction<string>>>[]
+        {ref_tile: any, changeColorTile: any}[]
         >([]);
 
     return (
