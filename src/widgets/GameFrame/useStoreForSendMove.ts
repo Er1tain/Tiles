@@ -3,6 +3,7 @@ import { ChoiceTilesType } from "./types";
 import { useEffect } from "react";
 import { addMove, Move } from "../../app/store/store";
 import { initStateChoiceTiles } from "./GameFrame";
+import blockedTiles from "./blockedTiles";
 
 export default function useStoreForSendMove([choice_tiles, setChoiceTiles]: [ChoiceTilesType, React.Dispatch<React.SetStateAction<ChoiceTilesType>>]) {
     const dispatch = useDispatch();
@@ -18,6 +19,8 @@ export default function useStoreForSendMove([choice_tiles, setChoiceTiles]: [Cho
             dispatch(addMove(move));
 
             if (choice_tiles?.second_tiles.color_tiles != "") setChoiceTiles(initStateChoiceTiles);
+            
+            choice_tiles.first_tiles.color_tiles == choice_tiles.second_tiles.color_tiles ? blockedTiles(choice_tiles) : console.log("новый раунд");
         }
     }, [choice_tiles, dispatch, setChoiceTiles])
 }
