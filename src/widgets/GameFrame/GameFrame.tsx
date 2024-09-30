@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { COLOR_GAME_FRAME, COLOR_TYPE_TILE_1, COLOR_TYPE_TILE_2 } from "../../shared/COLORS";
 import Tiles from "../Tiles";
 import { ChoiceTilesType, IGameFrame } from "./types";
@@ -50,11 +50,13 @@ export default function GameFrame({size}: IGameFrame) {
         );
     }
 
+    const table_tiles = useMemo(generateColumns, []);
+
     useStoreForSendMove([choice_tiles, setChoiceTiles]);
 
     return (
         <div style={{width: size * 100, height: size * 100, backgroundColor: COLOR_GAME_FRAME}}>
-            {generateColumns()}
+            {table_tiles}
         </div>
     );
 }
