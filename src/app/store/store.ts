@@ -17,7 +17,7 @@ export type FrameSize = "2x2"|"4x4"|"8x8";
 const initialState: TypeState = {
     frame_size: "2x2",
     moves: [],
-    current_round: 0
+    current_round: 1
 }
 
 const gameSlice = createSlice({
