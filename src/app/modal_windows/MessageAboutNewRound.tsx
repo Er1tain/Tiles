@@ -14,6 +14,7 @@ interface IMessageAboutNewRound {
 }
 
 const Window = styled.div`
+        left: 0;
         top: 0;
         position: absolute;
         width: 100%;

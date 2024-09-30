@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import useLocalStorage from "../app/hooks/useLocalStorage";
 import GameFrame from "../widgets/GameFrame/GameFrame";
+import { Container, SettingsButton } from "../styles/pages/Game";
 
 export default function Game() {
     //Количество строк/столбцов(их кол-во одинаково)
@@ -9,10 +10,10 @@ export default function Game() {
     const goToSettings = ()=>nav('/');
 
     return (
-            <div>
+            <Container>
                 <h1>Игра</h1>
                 <GameFrame size={frame_size}/>
-                <button onClick={goToSettings}>К настройкам</button>
-            </div>
+                <SettingsButton onClick={goToSettings}>К настройкам</SettingsButton>
+            </Container>
     );
 }
