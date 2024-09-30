@@ -37,6 +37,7 @@ const gameSlice = createSlice({
         },
         beginGame(state) {
             state.current_round = 1;
+            state.moves = [];
         }
     }
 
