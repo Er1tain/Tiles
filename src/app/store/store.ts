@@ -2,7 +2,8 @@ import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface TypeState {
     frame_size: FrameSize,
-    moves: Move[]
+    moves: Move[],
+    current_round: number
 }
 
 export interface Move {
@@ -15,7 +16,8 @@ export type FrameSize = "2x2"|"4x4"|"8x8";
 
 const initialState: TypeState = {
     frame_size: "2x2",
-    moves: []
+    moves: [],
+    current_round: 0
 }
 
 const gameSlice = createSlice({
@@ -29,6 +31,9 @@ const gameSlice = createSlice({
 
         addMove(state, action: PayloadAction<Move>) {
             state.moves.push(action.payload);
+        },
+        beginNewRound(state) {
+            state.current_round++;
         }
     }
 
@@ -53,5 +58,5 @@ store.subscribe(()=>{
     console.log(store.getState())
 })
 
-export const {choiceSize, addMove} = gameSlice.actions;
+export const {choiceSize, addMove, beginNewRound} = gameSlice.actions;
 export default store;
