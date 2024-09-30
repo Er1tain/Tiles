@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { initStateChoiceTiles } from "./GameFrame/GameFrame";
 
 interface ITiles {
@@ -13,6 +13,9 @@ export default function Tiles({backgroundColor = '', num_col, num_row, choice_ti
     //Плитка не видна пока на неё не кликнут
     const [bg, setBG] = useState<string>('');
     const OpenTiles = ()=>setBG(backgroundColor);
+
+    //Ccылка на функцию изменения состояния плитки
+    const ref_tile_and_state = useRef<Dispatch<SetStateAction<string>>>(setBG);
 
     //Координаты плитки(двузначное число; 1 цифра номер строки)
     const value_tile = num_row + num_col;
