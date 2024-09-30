@@ -4,6 +4,7 @@ import Tiles from "../Tiles";
 import { ChoiceTilesType, IGameFrame } from "./types";
 import { shuffle } from "./logic";
 import useStoreForSendMove from "./useStoreForSendMove";
+import MessageAboutNewRound from "../../app/modal_windows/MessageAboutNewRound";
 
 export const initStateChoiceTiles: ChoiceTilesType = {
     first_tiles: {
@@ -40,13 +41,16 @@ export default function GameFrame({size}: IGameFrame) {
 
     const generateColumns = ()=>{
         return (
-            <div>
+            <>
+            <div style={{position: "absolute"}}>
                 {new Array(size).fill('').map((_, i)=>{
                     return (
                         <div>{generateRowTiles(i)}</div>
                     )
                 })}
             </div>
+            <MessageAboutNewRound text="Раунд: " color_text="red" choice_tiles={choice_tiles}/>
+            </>
         );
     }
 
