@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { choiceSize, FrameSize, TypeState} from "../app/store/store";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
+import { Container } from "../styles/pages/Settings";
 
 export default function Settings() {
     const select_ref = useRef<HTMLSelectElement>(null);
@@ -21,7 +22,7 @@ export default function Settings() {
     const goToGame = ()=>nav('/game');
 
     return (
-            <div>
+            <Container>
                 <h1>Размер поля: </h1>
                 <select ref={select_ref} onChange={setFrameSizeInStore}>
                     <option value={"2x2"}>2x2</option>
@@ -29,6 +30,6 @@ export default function Settings() {
                     <option value={"8x8"}>8x8</option>
                 </select>
                 <button style={{visibility: visible_button }} onClick={goToGame}>Продолжить</button>
-            </div>
+            </Container>
     );
 }
