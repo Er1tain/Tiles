@@ -26,6 +26,11 @@ const Window = styled.div`
         background-color: rgba(0, 0, 0, 0.4);
 `
 
+const Message = styled.p`
+    font-size: 40px;
+    font-weight: bold;
+`
+
 export default function MessageAboutNewRound({text, color_text, choice_tiles}: IMessageAboutNewRound) {
     //Окно с уведомление активно или нет?
     const [status, setStatus] = useState<"visible"|"hidden">("hidden");
@@ -55,7 +60,7 @@ export default function MessageAboutNewRound({text, color_text, choice_tiles}: I
 
     return (
         <Window style={status ? {visibility: status} : {}}>
-            <p id="round_message" style={{color: color_text}}>{text} {current_round}</p>
+            <Message id="round_message" style={{color: color_text}}>{text} {current_round}</Message>
         </Window>
     );
 
