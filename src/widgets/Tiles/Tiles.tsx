@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { initStateChoiceTiles } from "./GameFrame/GameFrame";
+import { initStateChoiceTiles } from "../GameFrame/GameFrame";
 
 interface ITiles {
     backgroundColor?: string

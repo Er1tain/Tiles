@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { COLOR_GAME_FRAME, COLOR_TYPE_TILE_1, COLOR_TYPE_TILE_2 } from "../../shared/COLORS";
-import Tiles from "../Tiles";
+import Tiles from "../Tiles/Tiles";
 import { ChoiceTilesType, IGameFrame } from "./types";
 import { shuffle } from "./logic";
 import useStoreForSendMove from "./useStoreForSendMove";
