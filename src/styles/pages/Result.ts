@@ -9,3 +9,11 @@ export const Container = styled.div`
     width: 100%;
     height: 100%;
 `
+
+export const BackButton = styled.button`
+    font-size: 20px;
+`
+
+export const Paragraph = styled.p`
+    font-size: 17px;
+`

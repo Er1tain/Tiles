@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { TypeState } from "../app/store/store";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
-import { Container } from "../styles/pages/Result";
+import { BackButton, Container, Paragraph } from "../styles/pages/Result";
 
 export default function Result() {
     const results = useSelector(state => state) as TypeState;
@@ -16,13 +16,13 @@ export default function Result() {
 
     return (
         <Container>
-            <button onClick={goToMain}>На главную</button>
+            <BackButton onClick={goToMain}>На главную</BackButton>
             <h1>Результаты: </h1>
-            <p>Размер поля: {results.frame_size}</p>
-            <p>Количество раундов: {results.current_round}</p>
+            <Paragraph>Размер поля: {results.frame_size}</Paragraph>
+            <Paragraph>Количество раундов: {results.current_round}</Paragraph>
             <div>
                 {results.moves.map((move, i)=>{
-                    return <p>{i+1}. {move[1]} : {move[2]} : {move.result ? "Успех" : "Неудача"}</p>
+                    return <Paragraph>{i+1}. {move[1]} : {move[2]} : {move.result ? "Успех" : "Неудача"}</Paragraph>
                 })}
             </div>
         </Container>
