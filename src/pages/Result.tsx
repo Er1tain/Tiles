@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { TypeState } from "../app/store/store";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
+import { Container } from "../styles/pages/Result";
 
 export default function Result() {
     const results = useSelector(state => state) as TypeState;
@@ -12,7 +13,7 @@ export default function Result() {
     }, [])
 
     return (
-        <div>
+        <Container>
             <h1>Результаты: </h1>
             <p>Размер поля: {results.frame_size}</p>
             <p>Количество раундов: {results.current_round}</p>
@@ -21,6 +22,6 @@ export default function Result() {
                     return <p>{i+1}. {move[1]} : {move[2]} : {move.result ? "Успех" : "Неудача"}</p>
                 })}
             </div>
-        </div>
+        </Container>
     );
 }
