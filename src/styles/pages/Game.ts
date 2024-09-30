@@ -5,6 +5,9 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
 `
+export const Frame = styled.div`
+    margin-top: 30px;
+`
 
 export const SettingsButton = styled.button`
     width: max-content;

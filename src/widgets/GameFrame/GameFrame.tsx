@@ -6,7 +6,7 @@ import { shuffle } from "./logic";
 import useStoreForSendMove from "./useStoreForSendMove";
 import MessageAboutNewRound from "../../app/modal_windows/MessageAboutNewRound";
 import TilesContextProvider from "../../app/hooks/useTilesContext";
-import { ColsTiles, RowTiles } from "../../styles/pages/Game";
+import { ColsTiles, Frame, RowTiles } from "../../styles/pages/Game";
 
 export const initStateChoiceTiles: ChoiceTilesType = {
     first_tiles: {
@@ -60,9 +60,9 @@ export default function GameFrame({size}: IGameFrame) {
     const table_tiles = generateColumns();
     return (
         <TilesContextProvider>
-            <div style={{width: size * 100, height: size * 100, backgroundColor: COLOR_GAME_FRAME}}>
+            <Frame style={{width: size * 100, height: size * 100, backgroundColor: COLOR_GAME_FRAME}}>
                 {table_tiles}
-            </div>
+            </Frame>
         </TilesContextProvider>
     );
 }
